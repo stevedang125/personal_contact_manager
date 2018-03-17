@@ -31,9 +31,10 @@ mongoose.connection.on('error', (err)=>{
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-// app.use(passport.initialize());
-// app.use(passport.session());
-// require('./config/passport')(passport);
+// User need to log in to access user profile, dashboard
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 
 // Set the static folder, this folder will have all
 // of the Angular front end in it.

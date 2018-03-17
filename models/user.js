@@ -30,3 +30,16 @@ module.exports.registerUser = function(newUser, callback){
     });
 }
 
+// Login look up username:
+module.exports.getUserByUsername = function(username, callback){
+    const query = {username: username};
+    User.findOne(query, callback);
+}
+// Login compare password:
+module.exports.comparePassword = function(input_password, hash, callback){
+    bcrypt.compare(input_password, hash, (err, match)=>{
+        if(err) throw err;
+        callback(null, match);
+    })
+}
+
