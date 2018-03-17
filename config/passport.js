@@ -18,11 +18,15 @@ module.exports = function(passport){
 
     // User new jwt strategy, pass in the options, get a callnback,
     // in the callback, the payload will includes the user information
+    // When the user is trying to access an auth. route, this method will 
+    // use the token to check if there is a valid user with this token or not.
     passport.use(new JwtStrategy(options, (jwt_payload, done)=>{
         User.getUserById(jwt_payload._id, (err, user)=>{
             if(err){
                 return done(err, false);
             }
+            // if based on the id, a user is found, return null err and user's information
+            // *********** becareful on this *********, might not want to send everything back
             if(user){
                 return done(null, user);
             }else{

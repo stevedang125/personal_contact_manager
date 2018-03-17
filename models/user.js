@@ -43,3 +43,7 @@ module.exports.comparePassword = function(input_password, hash, callback){
     })
 }
 
+// Passport, JWT token:
+module.exports.getUserById = function(id, callback){
+    User.findById(id, callback);
+}

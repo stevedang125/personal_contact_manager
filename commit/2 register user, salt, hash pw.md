@@ -1,5 +1,5 @@
 # Create new user schema, salt hash pw with bcrypt, add the user to the database, test it by POSTMAN:
-# 1. Create new user scheme:
+## 1. Create new user scheme:
 Create a "models/user.js" folder and user.js file.
 
 Bring in the dependencies
@@ -39,7 +39,7 @@ module.exports.registerUser = function(newUser, callback){
 }
 ```
 
-# 2. POST method for /register route:
+## 2. POST method for /register route:
 Bring in the user schema and helper functions to add/register the user to the mLab database
 ```
 const User = require('../models/user');
@@ -67,7 +67,7 @@ router.post('/register', (req,res,next)=>{
     // res.send('This is a http post register request.');
 });
 ```
-# 3. POSTMAN:
+## 3. POSTMAN:
 Make a POST request to localhost:8080/register
 ```
 Header:

@@ -1,12 +1,12 @@
 # Bring in passport in server, create passport.js file, username lookup & compare pw, generate a token:
-# 1. Bring in passport strategy in server.js:
+## 1. Bring in passport strategy in server.js:
 User need to log in to access user's profile and dashboard:
 ```
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
 ```
-# 2. Create "models/passport.js" for JWT strategy and extract jwt from the header for authentication:
+## 2. Create "models/passport.js" for JWT strategy and extract jwt from the header for authentication:
 Bring in passport jsonwebtoken strategy:
 ```
 const JwtStrategy = require('passport-jwt').Strategy;
@@ -46,7 +46,7 @@ module.exports = function(passport){
     }));
 }
 ```
-# 3. Create two helper functions in models/user.js:
+## 3. Create two helper functions in models/user.js:
 Login look up username:
 ```
 module.exports.getUserByUsername = function(username, callback){
@@ -63,7 +63,13 @@ module.exports.comparePassword = function(input_password, hash, callback){
     })
 }
 ```
-# 4. POST login function in routes/users.js:
+Passport, JWT token:
+```
+module.exports.getUserById = function(id, callback){
+    User.findById(id, callback);
+}
+```
+## 4. POST login function in routes/users.js:
 Bring in passport and jwt for authentication
 ```
 const passport = require('passport');
@@ -111,7 +117,7 @@ router.post('/login', (req,res,next)=>{
 });
 ```
 
-# 5. Test the route in POSTMAN:
+## 5. Test the route in POSTMAN:
 Make a POST request to localhost:8080/login
 ```
 Header:
