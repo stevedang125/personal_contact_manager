@@ -1,0 +1,22 @@
+{
+  "name": "personal_contact_manager",
+  "version": "1.0.0",
+  "description": "Personal Contact Manager allows the user to log in or register, then add new contacts, update contacts, delete contacts or look up a specific contact. This is a web app using the MEAN stack.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "^1.18.2",
+    "cors": "*",
+    "bcryptjs": "*",
+    "mongoose": "*",
+    "jsonwebtoken": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Steve",
+  "license": "ISC"
+}
