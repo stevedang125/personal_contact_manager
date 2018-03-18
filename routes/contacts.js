@@ -47,8 +47,33 @@ router.post('/dashboard/add_contact', passport.authenticate('jwt', {session: fal
 });
 
 router.put('/dashboard/update_contact', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
+
+    Contact.getContactById(req.body._id, (err, contact)=>{
+        if(err){
+            res.status(500).json({errmsg:'Failed to find contact to update, here is the err: '+err});
+        }
+        // Successful found the contact, ready to update it:
+        contact._id = req.body._id,
+        contact.firstName = req.body.firstName,
+        contact.lastName = req.body.lastName,
+        contact.preferredName = req.body.preferredName,
+        contact.address = req.body.address,
+        contact.email = req.body.email,
+        contact.homePhone = req.body.homePhone,
+        contact.cellPhone = req.body.cellPhone,
+        contact.user_id = req.body.user_id
+
+        Contact.addContact(contact, (err, savedContact)=>{
+            if(err){
+                res.status(500).json({success: false, msg:'Failed to update, here is the err: '+err});
+            }else{
+                res.status(200).json({success: true, msg: 'Contact updated!'});
+            }
+        });
+
+    });
     // res.send('This is a http PUT dashboard update contact request.');
-    res.json({user: req.user});
+    // res.json({user: req.user});
 });
 
 router.delete('/dashboard/delete_contact/:id', passport.authenticate('jwt', {session: false}), (req,res,next)=>{

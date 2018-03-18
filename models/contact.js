@@ -26,3 +26,7 @@ module.exports.addContact = function(newContact, callback){
     newContact.save(callback);
 }
 
+// Update an existing contact in the database
+module.exports.getContactById = function(id, callback){
+    Contact.findById(id, callback);
+}
