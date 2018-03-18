@@ -38,7 +38,8 @@ require('./config/passport')(passport);
 
 // Set the static folder, this folder will have all
 // of the Angular front end in it.
-app.use(express.static(path.join(__dirname+'public')));
+// app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // These will be the api/routes for this web app:
 app.use('/', userRoutes);
@@ -46,7 +47,11 @@ app.use('/user', contactRoutes);
 
 
 // For all other routes, send the user back to home:
-app.get('*', (req,res) =>{
+// app.get('*', (req,res) =>{
+//     res.sendFile(path.join(__dirname, 'public/index.html'));
+// });
+
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
