@@ -11,19 +11,30 @@ const passport = require('passport');
 // Bring in the contact schema from models
 const Contact = require('../models/contact');
 
-// const ObjectId = mongoose.Types.ObjectId;
-// const Schema = mongoose.Schema;
+// These will be used to get the object id
+// to fetch the contact list from the database to the template:
+const ObjectId = mongoose.Types.ObjectId;
+const Schema = mongoose.Schema;
 
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     console.log('This is a http GET profile request.');
     res.json({user: req.user});
 });
 
+// Fetch the contact list from the database to the template
 router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
+    const user_id = new ObjectId(req.user.id);
+    const query = Contact.find({});
+    query.where('user_id', user_id);
+
+    query.exec(function(err, contactlist){
+        (err) ? console.log('Error! ** Search for tasks with same owner: '+err) : res.status(200).json({user: req.user, contactlist: contactlist});
+    });
     //res.send('This is a http GET dashboard request.');
-    res.json({user: req.user});
+    // res.json({user: req.user});
 });
 
+// Add a new contact
 router.post('/dashboard/add_contact', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     // Create a new object to hold the new contact informaiton from the request.body
     let newContact = new Contact({
@@ -46,6 +57,7 @@ router.post('/dashboard/add_contact', passport.authenticate('jwt', {session: fal
     // res.json({user: req.user});
 });
 
+// Update an existing contact
 router.put('/dashboard/update_contact', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
 
     Contact.getContactById(req.body._id, (err, contact)=>{
@@ -76,6 +88,7 @@ router.put('/dashboard/update_contact', passport.authenticate('jwt', {session: f
     // res.json({user: req.user});
 });
 
+// Delete a contact from database 
 router.delete('/dashboard/delete_contact/:id', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
     Contact.findOneAndRemove({_id: req.params.id}, (err, contact)=>{
         if(err){

@@ -14,9 +14,9 @@ router.delete('/dashboard/delete_contact/:id', passport.authenticate('jwt', {ses
 });
 ```
 ## 2. Test it via POSTMAN:
-Make a DELETE request to:(with the id in the api route) ------vvvvvvv
+Make a DELETE request to:(with the id in the api route)
 localhost:8080/user/dashboard/delete_contact/5aadd840d0f54c46f4ddcd80 
-**** Don't forget to include the <<<<<< *_id *>>>>> in the api route
+**** Don't forget to include the parameter id "user/dashboard/delete_contact/id"
 ```
 Header:
 Authorization   JWT token
