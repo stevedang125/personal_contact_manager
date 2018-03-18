@@ -27,11 +27,13 @@ module.exports = function(passport){
             }
             // if based on the id, a user is found, return null err and user's information
             // *********** becareful on this *********, might not want to send everything back
-            if(user){
-                return done(null, user);
-            }else{
-                return done(null, false);
-            }
+            // if(user){
+            //     return done(null, user);
+            // }else{
+            //     return done(null, false);
+            // }
+            return (user) ? done(null, user) : done(null, false);
+
         });
     }));
 }
