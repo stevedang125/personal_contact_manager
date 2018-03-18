@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import array:
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -14,12 +16,14 @@ import { AboutComponent } from './about/about.component';
 
 
 import { FilterPipe } from './services/filter.pipe';
+import { AuthService } from './services/auth.service'; 
+import { ValidateService } from './services/validate.service';
 
 const appRoutes: Routes =[
   { path:'', component: HomeComponent },
   { path: 'register', component: RegisterComponent},
-  { path:'dashboard', component: DashboardComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path:'user/dashboard', component: DashboardComponent},
+  { path: 'user/profile', component: ProfileComponent},
   { path: 'about', component: AboutComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
@@ -37,9 +41,11 @@ const appRoutes: Routes =[
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ValidateService, AuthService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 

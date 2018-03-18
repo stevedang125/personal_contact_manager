@@ -1,0 +1,16 @@
+.list-group-item {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 80%;
+}
+
+.column {
+    float: left;
+    padding: 0px;
+    height: 100%;
+    margin-top: -1px;
+}
+
+.profileRight {
+    width: 100%;
+    padding: 50px 0px 0px 400px;
+}

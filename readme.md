@@ -1,4 +1,4 @@
-# Personal Contact Manager Web App:
+# Personal Contact Manager Web App:(done it before with an amazing group, re-do this for practice)
 
 This project is a personal contact manager web app.
 It supports:

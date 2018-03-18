@@ -1,3 +1,40 @@
-<p>
-  home works!
-</p>
+<html>
+
+<div class="container">
+<div class="jumbotron center">
+  <h1>Personal Contact Manager</h1>
+  <p class="lead">
+    Welcome to the daily goals MEAN stack web app by <strong>Steve Dang</strong>
+  </p>
+</div>
+
+<div class="row">
+
+<div class="column loginRight" *ngIf="!authService.isLoggedIn()">
+  <h2 class="page-header">Login</h2>
+  <form class="form-signin">
+          <div class="form-group">
+            <label for="Username">Username</label>
+            <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="username" name="username">
+          </div>
+          <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" placeholder=" Enter Password" [(ngModel)]="password" name="password">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <!-- <input class="btn btn-lg btn-success" type="submit" value="Login"><br><br> -->
+          <button class="btn btn-success" (click)="onLoginSubmit()">Login</button>&nbsp;
+          <button class="btn btn-danger" (click)="onCancelSubmit()">Cancel</button><br><br>
+          <p>Don't have an account yet? <a [routerLink] = "['/register']">Register Here</a></p> 
+  </form>
+</div>
+
+</div>
+
+</div>
+
+</html>

@@ -1,3 +1,14 @@
-<p>
-  profile works!
-</p>
+
+<div class="container">
+<div class="row">
+  <div *ngIf="user" class="container column profileRight">
+      <h2 class="page-header" style="color: rgb(223, 56, 35)" >Welcome back, {{user.name}}.</h2>
+      <ul class="list-group">
+        <li class="list-group-item">ID: {{user._id}}</li>
+        <li class="list-group-item">Username: {{user.username}}</li>
+        <li class="list-group-item">Email: {{user.email}}</li>
+        <li class="list-group-item">Password: {{user.password}}</li> 
+      </ul>
+    </div>
+</div>
+</div>

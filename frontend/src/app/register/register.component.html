@@ -1,3 +1,43 @@
-<p>
-  register works!
-</p>
+<!-- <html> -->
+  <div class="row">
+    <div class="column registerRight">
+    <div class="container">
+    
+      <div class="container" *ngIf="!authService.isLoggedIn()">
+        <h2 class="page-header">Register</h2>
+        <!-- <form class="form-signin" (submit)="onRegisterSubmit()"> -->
+            <form class="form-signin">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" placeholder="*Enter Name" [(ngModel)]="name" name="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" placeholder="*Enter Email" [(ngModel)]="email" name="email">
+                </div>
+    
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" placeholder="*Enter Username" [(ngModel)]="username" name="username">
+                </div>
+    
+                <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="*Enter Password" [(ngModel)]="password" name="password">
+                </div>
+    
+                <!-- <input class="btn btn-lg btn-success" type="submit" value="Register"><br><br>
+                <button (click)="onCancelSubmit()">Cancel</button> -->
+                <button class="btn btn-success" (click)="onRegisterSubmit()">Register</button>&nbsp;
+                <button class="btn btn-danger" (click)="onCancelSubmit()">Cancel</button><br><br>
+                <p>Already have an account? <a [routerLink] = "['/']">Login Here</a></p> 
+        </form>
+      </div>
+    
+    </div>
+    
+    
+    </div>
+    </div>
+    
+    <!-- </html> -->

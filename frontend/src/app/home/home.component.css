@@ -1,0 +1,16 @@
+.column {
+    float: left;
+    padding: 0px;
+    height: 100%;
+    margin-top: -1px;
+}
+
+.loginRight {
+    width: 75%;
+    padding: 0px 0px 0px 500px;
+}
+
+.jumbotron{
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
