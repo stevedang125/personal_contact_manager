@@ -77,8 +77,14 @@ router.put('/dashboard/update_contact', passport.authenticate('jwt', {session: f
 });
 
 router.delete('/dashboard/delete_contact/:id', passport.authenticate('jwt', {session: false}), (req,res,next)=>{
+    Contact.findOneAndRemove({_id: req.params.id}, (err, contact)=>{
+        if(err){
+            res.status(500).json({errmsg: 'Failed to delete contact!'});
+        }
+        res.status(200).json({msg: contact});
+    });
     // res.send('This is a http DELETE dashboard delete contact request.');
-    res.json({user: req.user});
+    // res.json({user: req.user});
 });
 
 module.exports = router;
