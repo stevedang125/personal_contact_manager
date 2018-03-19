@@ -1,3 +1,33 @@
-<p>
-  dashboard works!
-</p>
+
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"><strong>Contact List</strong></h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><h6><strong>Number</strong></h6></th>
+            <th><h6><strong>Firstname</strong></h6></th>
+            <th><h6><strong>Lastname</strong></h6></th>
+            <th><h6><strong>Preferred Name</strong></h6></th>
+            <th><h6><strong>Address</strong></h6></th>
+            <th><h6><strong>Email</strong></h6></th>
+            <th><h6><strong>Home Phone</strong></h6></th>
+            <th><h6><strong>Cell Phone</strong></h6></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of hack(contactlist); let i = index">
+              <td>{{i+1}}</td>
+              <td>{{contact.firstName}}</td>
+              <td>{{contact.lastName}}</td>
+              <td>{{contact.preferredName}}</td>
+              <td>{{contact.address}}</td>
+              <td>{{contact.email}}</td>
+              <td>{{contact.homePhone}}</td>
+              <td>{{contact.cellPhone}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

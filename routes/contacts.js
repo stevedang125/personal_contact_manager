@@ -28,9 +28,14 @@ router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req,re
     query.where('user_id', user_id);
 
     query.exec(function(err, contactlist){
-        (err) ? console.log('Error! ** Search for tasks with same owner: '+err) : res.status(200).json({user: req.user, contactlist: contactlist});
+        if(err){
+            console.log('Error! ** Search for tasks with same owner: '+err);
+        }else{
+        console.log('Success backend dashboard');
+        res.status(200).json({user: req.user, contactlist: contactlist});
+    }
     });
-    //res.send('This is a http GET dashboard request.');
+    // res.send('This is a http GET dashboard request.');
     // res.json({user: req.user});
 });
 
