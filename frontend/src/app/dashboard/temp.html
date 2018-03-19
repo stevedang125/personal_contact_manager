@@ -1,0 +1,298 @@
+      <!-- Search -->
+      <!-- <div class="card"> -->
+          <form>
+              <!-- <div class="card-body"> -->
+                <!-- <h6 class="card-title"> -->
+                <h6>
+                  <!-- <strong>Search</strong> -->
+                  <button class="btn btn-success" (click)="search_contact()">Search</button>&nbsp;
+                  <button class="btn btn-danger" (click)="clearSearch()">Clear</button>
+                </h6>
+                
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                            <input placeholder="*Enter Name" type="text" name="inputString" [(ngModel)] = "inputString" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- <tr>
+                      <button class="btn btn-success" (click)="search_contact()">Search</button>&nbsp;
+                      <button class="btn btn-danger" (click)="clearSearch()">Clear</button>
+                    </tr> -->
+                  </tbody>
+                </table>
+              <!-- </div> -->
+            </form>
+        <!-- </div> -->
+      <!-- End Search -->
+
+
+
+<div class="row">
+  <div class="col-md-2">
+    <!-- Search -->
+    <div class="card searchMenu">
+
+      <!-- <div class="card"> -->
+          <form>
+            <div class="card-body">
+              <h4 class="card-title"><strong>Search</strong></h4>
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                          <input type="text" name="inputString" [(ngModel)] = "inputString" class="form-control">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <button class="btn btn-success" (click)="search_contact()">Search</button>&nbsp;
+                    <button class="btn btn-danger" (click)="clearSearch()">Clear</button>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+      <!-- </div> -->
+        
+  </div> 
+  <!-- end search -->
+
+  <!-- Add -->
+  <div class="card addMenu">
+        
+      <form>
+        <div class="card-body half">
+          <h4 class="card-title"><strong>Add Contact</strong></h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>
+                  <div class="form-group">
+                    <label><h6><strong>Firstname:</strong></h6></label>
+                    <input type="text" name="firstName" [(ngModel)] = "firstName" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label><h6><strong>Lastname:</strong></h6></label>
+                      <input type="text" name="lastName" [(ngModel)] = "lastName" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label><h6><strong>Preferred Name:</strong></h6></label>
+                      <input type="text" name="preferredName" [(ngModel)] = "preferredName" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label><h6><strong>Address:</strong></h6></label>
+                      <input type="text" name="address" [(ngModel)] = "address" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label><h6><strong>Email:</strong></h6></label>
+                      <input type="text" name="email" [(ngModel)] = "email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label><h6><strong>Home Phone:</strong></h6></label>
+                      <input type="text" name="homePhone" [(ngModel)] = "homePhone" class="form-control">
+                  </div>
+                  <div class="form-group">
+                      <label><h6><strong>Cell Phone:</strong></h6></label>
+                      <input type="text" name="cellPhone" [(ngModel)] = "cellPhone" class="form-control">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <!-- <input type="submit" value="Submit" class="btn btn-success"> -->
+                    <button class="btn btn-success" (click)="onSubmitButton()">Submit</button>&nbsp;
+                    <button class="btn btn-danger" (click)="clear()">Clear</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+  </div>
+  <!-- End add -->
+
+  </div>
+  <div class="col-md-4">
+    <!-- Main -->
+    <!-- Contact list -->
+  <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><strong>Contact List</strong></h4>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><h6><strong>Number</strong></h6></th>
+              <th><h6><strong>Firstname</strong></h6></th>
+              <th><h6><strong>Lastname</strong></h6></th>
+              <th><h6><strong>Preferred Name</strong></h6></th>
+              <th><h6><strong>Address</strong></h6></th>
+              <th><h6><strong>Email</strong></h6></th>
+              <th><h6><strong>Home Phone</strong></h6></th>
+              <th><h6><strong>Cell Phone</strong></h6></th>
+              <th><h6><strong>Options</strong></h6></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let contact of hack(contactlist) | filter:inputString; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td>{{contact.preferredName}}</td>
+                <td>{{contact.address}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.homePhone}}</td>
+                <td>{{contact.cellPhone}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="onDeleteButton(contact)">Delete</button>&nbsp;
+                    <button class="btn btn-info" (click)="onEditButton(contact)" >Edit</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+
+    <!-- End main -->
+  </div>
+</div>
+
+<div class="menu scrolling">
+  <!-- Search -->
+  <div class="card searchMenu">
+
+      <!-- <div class="card"> -->
+          <form>
+            <div class="card-body">
+              <h4 class="card-title"><strong>Search</strong></h4>
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-group">
+                          <input type="text" name="inputString" [(ngModel)] = "inputString" class="form-control">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <button class="btn btn-success" (click)="search_contact()">Search</button>&nbsp;
+                    <button class="btn btn-danger" (click)="clearSearch()">Clear</button>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+      <!-- </div> -->
+
+  </div>
+
+    <!-- Add Contact -->
+    <div class="card addMenu">
+        
+            <form>
+              <div class="card-body half">
+                <h4 class="card-title"><strong>Add Contact</strong></h4>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label><h6><strong>Firstname:</strong></h6></label>
+                          <input type="text" name="firstName" [(ngModel)] = "firstName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><h6><strong>Lastname:</strong></h6></label>
+                            <input type="text" name="lastName" [(ngModel)] = "lastName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><h6><strong>Preferred Name:</strong></h6></label>
+                            <input type="text" name="preferredName" [(ngModel)] = "preferredName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><h6><strong>Address:</strong></h6></label>
+                            <input type="text" name="address" [(ngModel)] = "address" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><h6><strong>Email:</strong></h6></label>
+                            <input type="text" name="email" [(ngModel)] = "email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><h6><strong>Home Phone:</strong></h6></label>
+                            <input type="text" name="homePhone" [(ngModel)] = "homePhone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label><h6><strong>Cell Phone:</strong></h6></label>
+                            <input type="text" name="cellPhone" [(ngModel)] = "cellPhone" class="form-control">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <!-- <input type="submit" value="Submit" class="btn btn-success"> -->
+                          <button class="btn btn-success" (click)="onSubmitButton()">Submit</button>&nbsp;
+                          <button class="btn btn-danger" (click)="clear()">Clear</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+        </div>
+      
+
+
+</div>
+
+
+<div class="main scrolling">
+  
+  <!-- Contact list -->
+  <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><strong>Contact List</strong></h4>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><h6><strong>Number</strong></h6></th>
+              <th><h6><strong>Firstname</strong></h6></th>
+              <th><h6><strong>Lastname</strong></h6></th>
+              <th><h6><strong>Preferred Name</strong></h6></th>
+              <th><h6><strong>Address</strong></h6></th>
+              <th><h6><strong>Email</strong></h6></th>
+              <th><h6><strong>Home Phone</strong></h6></th>
+              <th><h6><strong>Cell Phone</strong></h6></th>
+              <th><h6><strong>Options</strong></h6></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let contact of hack(contactlist) | filter:inputString; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td>{{contact.preferredName}}</td>
+                <td>{{contact.address}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.homePhone}}</td>
+                <td>{{contact.cellPhone}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="onDeleteButton(contact)">Delete</button>&nbsp;
+                    <button class="btn btn-info" (click)="onEditButton(contact)" >Edit</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

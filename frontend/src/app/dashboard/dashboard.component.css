@@ -1,4 +1,78 @@
 .card{
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px;
+    padding: 0px, 0px, 0px, 0px;
+}
+
+.menu{
+    width: 25%;
+    float: left;
+    border: 1px solid red;
+    height: 100%;
+}
+
+.searchMenu{
+    float: left;
+    width: 100%;
+    border: 1px solid green;
+    height: 25%;
+
+}
+.addMenu{
+    float: left;
+    width: 100%;
+    border: 1px solid green;
+    height: 75%;
+}
+
+.main{
+    width: 75%;
+    float: left;
+    border: 1px solid red;
+    height: 100%;
+}
+
+.half{
+    width: 100%;
+}
+
+.column {
+    float: left;
+    /* padding: 0px, 50px, 0px, 50px; */
+    height: 550px;
+}
+
+.zoom {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+ }
+
+/* col-sm-9{
+    max-height: 550px;
+    overflow: auto;
+} */
+
+.left_column {
+    width: 25%;
+    height: 550px;
+}
+.right_column {
+    width: 75%;
+    height: 550px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* .auto_div{
+    height: 550px;
+    position: center;
+    size: cover;
+} */
+
+.scrolling {
+    overflow: auto;
 }
